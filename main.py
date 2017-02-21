@@ -228,8 +228,9 @@ class SignupHandler(BlogHandler):
         elif (username and password and verify and (email is not None) ):
 
             # create new user object and store it in the database
+            #MMR - added email to creation of user
             pw_hash = hashutils.make_pw_hash(username, password)
-            user = User(username=username, pw_hash=pw_hash)
+            user = User(username=username, pw_hash=pw_hash, email=email)
             user.put()
 
             # login our new user
